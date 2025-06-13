@@ -10,28 +10,11 @@ import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
 import * as React from 'react'
 
 import * as config from '@/lib/config'
-import { useDarkMode } from '@/lib/use-dark-mode'
-
+// import { useDarkMode } from '@/lib/use-dark-mode'
 import styles from './styles.module.css'
 
-// TODO: merge the data and icons from PageSocial with the social links in Footer
-
 export function FooterImpl() {
-  const [hasMounted, setHasMounted] = React.useState(false)
-  const { isDarkMode, toggleDarkMode } = useDarkMode()
   const currentYear = new Date().getFullYear()
-
-  const onToggleDarkMode = React.useCallback(
-    (e: any) => {
-      e.preventDefault()
-      toggleDarkMode()
-    },
-    [toggleDarkMode]
-  )
-
-  React.useEffect(() => {
-    setHasMounted(true)
-  }, [])
 
   return (
     <footer className={styles.footer}>
@@ -40,17 +23,29 @@ export function FooterImpl() {
       </div>
 
       <div className={styles.settings}>
-{/*         {hasMounted && (
+        {/* 
+        夜间模式按钮：
+        const [hasMounted, setHasMounted] = React.useState(false)
+        const { isDarkMode, toggleDarkMode } = useDarkMode()
+        const onToggleDarkMode = React.useCallback((e) => {
+          e.preventDefault()
+          toggleDarkMode()
+        }, [toggleDarkMode])
+
+        useEffect(() => setHasMounted(true), [])
+
+        {hasMounted && (
           <a
             className={styles.toggleDarkMode}
-            href='#'
-            role='button'
+            href="#"
+            role="button"
             onClick={onToggleDarkMode}
-            title='Toggle dark mode'
+            title="Toggle dark mode"
           >
             {isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
           </a>
-        )} */}
+        )}
+        */}
       </div>
 
       <div className={styles.social}>
@@ -59,8 +54,8 @@ export function FooterImpl() {
             className={styles.twitter}
             href={`https://twitter.com/${config.twitter}`}
             title={`Twitter @${config.twitter}`}
-            target='_blank'
-            rel='noopener noreferrer'
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <FaTwitter />
           </a>
@@ -71,7 +66,7 @@ export function FooterImpl() {
             className={styles.mastodon}
             href={config.mastodon}
             title={`Mastodon ${config.getMastodonHandle()}`}
-            rel='me'
+            rel="me"
           >
             <FaMastodon />
           </a>
@@ -82,8 +77,8 @@ export function FooterImpl() {
             className={styles.zhihu}
             href={`https://zhihu.com/people/${config.zhihu}`}
             title={`Zhihu @${config.zhihu}`}
-            target='_blank'
-            rel='noopener noreferrer'
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <FaZhihu />
           </a>
@@ -94,8 +89,8 @@ export function FooterImpl() {
             className={styles.github}
             href={`https://github.com/${config.github}`}
             title={`GitHub @${config.github}`}
-            target='_blank'
-            rel='noopener noreferrer'
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <FaGithub />
           </a>
@@ -106,8 +101,8 @@ export function FooterImpl() {
             className={styles.linkedin}
             href={`https://www.linkedin.com/in/${config.linkedin}`}
             title={`LinkedIn ${config.author}`}
-            target='_blank'
-            rel='noopener noreferrer'
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <FaLinkedin />
           </a>
@@ -116,10 +111,10 @@ export function FooterImpl() {
         {config.newsletter && (
           <a
             className={styles.newsletter}
-            href={`${config.newsletter}`}
+            href={config.newsletter}
             title={`Newsletter ${config.author}`}
-            target='_blank'
-            rel='noopener noreferrer'
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <FaEnvelopeOpenText />
           </a>
@@ -130,8 +125,8 @@ export function FooterImpl() {
             className={styles.youtube}
             href={`https://www.youtube.com/${config.youtube}`}
             title={`YouTube ${config.author}`}
-            target='_blank'
-            rel='noopener noreferrer'
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <FaYoutube />
           </a>
