@@ -40,7 +40,7 @@ export function FooterImpl() {
       </div>
 
       <div className={styles.settings}>
-        {hasMounted && (
+{/*         {hasMounted && (
           <a
             className={styles.toggleDarkMode}
             href='#'
@@ -50,7 +50,7 @@ export function FooterImpl() {
           >
             {isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
           </a>
-        )}
+        )} */}
       </div>
 
       <div className={styles.social}>
