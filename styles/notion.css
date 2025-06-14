@@ -415,8 +415,7 @@
 
 
 
-
-/* 新增css_3D卡片按压效果 - 纯CSS版本 */
+/* 3D卡片按压效果 - 纯CSS版本 */
 .notion-collection-card {
   position: relative;
   transform-style: preserve-3d;
@@ -424,7 +423,7 @@
   transform: perspective(1000px) rotateX(0) rotateY(0);
   cursor: pointer;
   will-change: transform;
-  margin: 0 8px; /* 默认添加16px的左右边距 */
+   margin: 0 8px; /*默认添加16px的左右边距 */
 }
 
 /* 响应式边距调整 */
@@ -439,7 +438,7 @@
   .notion-collection-card {
     max-width: 1200px; /* 设置最大宽度 */
     margin: 0 auto; /* 水平居中 */
-    padding: 0 24px; /* 添加内边距 */
+    
   }
 }
 
