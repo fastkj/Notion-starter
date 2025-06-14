@@ -424,6 +424,23 @@
   transform: perspective(1000px) rotateX(0) rotateY(0);
   cursor: pointer;
   will-change: transform;
+  margin: 0 8px; /* 默认添加16px的左右边距 */
+}
+
+/* 响应式边距调整 */
+@media (min-width: 600px) {
+  .notion-collection-card {
+    margin: 0 8px; /* 桌面端增加边距 */
+  }
+}
+
+/* 在大屏幕上可以设置最大宽度并居中 */
+@media (min-width: 900px) {
+  .notion-collection-card {
+    max-width: 1200px; /* 设置最大宽度 */
+    margin: 0 auto; /* 水平居中 */
+    padding: 0 24px; /* 添加内边距 */
+  }
 }
 
 /* 移除默认点击效果 */
@@ -433,6 +450,7 @@
   -webkit-touch-callout: none !important;
   user-select: none !important;
   outline: none !important;
+  -webkit-user-drag: none;
 }
 
 /* 点击时的3D效果 */
@@ -443,6 +461,10 @@
 
 /* 移动端优化 */
 @media (hover: none) and (pointer: coarse) {
+  .notion-collection-card {
+    margin: 0 8px; /* 移动端边距稍小 */
+  }
+  
   .notion-collection-card:active {
     transform: perspective(1000px) rotateX(3deg) rotateY(3deg) scale(0.96);
   }
