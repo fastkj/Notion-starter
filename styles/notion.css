@@ -415,7 +415,7 @@
 
 
 
-/* 3D卡片按压效果 - 纯CSS版本 */
+/* 3D卡片按压 + 悬停效果 - 纯CSS版本 */
 .notion-collection-card {
   position: relative;
   transform-style: preserve-3d;
@@ -423,22 +423,32 @@
   transform: perspective(1000px) rotateX(0) rotateY(0);
   cursor: pointer;
   will-change: transform;
-   margin: 0 8px; /*默认添加16px的左右边距 */
+  margin: 0 8px; /* 默认左右边距 */
+}
+
+/* 悬停时的3D效果 */
+.notion-collection-card:hover {
+  transform: perspective(1000px) rotateX(-2deg) rotateY(2deg) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* 点击时的3D按压效果 */
+.notion-collection-card:active {
+  transform: perspective(1000px) rotateX(2deg) rotateY(2deg) scale(0.98);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* 响应式边距调整 */
 @media (min-width: 600px) {
   .notion-collection-card {
-    margin: 0 8px; /* 桌面端增加边距 */
+    margin: 0 8px;
   }
 }
 
-/* 在大屏幕上可以设置最大宽度并居中 */
 @media (min-width: 900px) {
   .notion-collection-card {
-    max-width: 1200px; /* 设置最大宽度 */
-    margin: 0 auto; /* 水平居中 */
-    
+    max-width: 1200px;
+    margin: 0 auto;
   }
 }
 
@@ -452,18 +462,12 @@
   -webkit-user-drag: none;
 }
 
-/* 点击时的3D效果 */
-.notion-collection-card:active {
-  transform: perspective(1000px) rotateX(2deg) rotateY(2deg) scale(0.98);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
 /* 移动端优化 */
 @media (hover: none) and (pointer: coarse) {
   .notion-collection-card {
-    margin: 0 8px; /* 移动端边距稍小 */
+    margin: 0 8px;
   }
-  
+
   .notion-collection-card:active {
     transform: perspective(1000px) rotateX(3deg) rotateY(3deg) scale(0.96);
   }
