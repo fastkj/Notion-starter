@@ -93,17 +93,18 @@
 .notion-collection-card-cover {
   border-radius: 16px;
   box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
-}
-
-.notion-collection-card-cover {
   border-bottom: 0 none;
   transition: filter 150ms linear;
   filter: none;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
-.notion-collection-card:hover .notion-collection-card-cover {
+/* 移除brightness滤镜效果，避免与3D变换冲突导致失真 */
+/* .notion-collection-card:hover .notion-collection-card-cover {
   filter: brightness(120%);
-}
+} */
 
 .notion-collection-card-body {
   padding: 10px;
@@ -158,6 +159,73 @@
 @media only screen and (max-width: 600px) {
   .notion-search-button {
     display: none !important;
+  }
+  
+  /* 移动端优化：保持图片横向并排显示 */
+  .notion-row {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+  
+  .notion-column {
+    flex: 1 1 calc(50% - 4px) !important;
+    min-width: 0 !important;
+    width: auto !important;
+  }
+  
+  /* 确保图片容器保持合适的比例 */
+  .notion-asset-wrapper {
+    margin: 0 !important;
+    width: 100% !important;
+  }
+  
+  .notion-asset-wrapper > div {
+    width: 100% !important;
+    height: auto !important;
+    /* 移除固定的aspect-ratio，让图片自然显示 */
+  }
+  
+  .notion-asset-wrapper img {
+    object-fit: contain !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    border-radius: 12px !important; /* 添加圆角 */
+  }
+  
+  /* 移除默认的spacer间距 */
+  .notion-spacer {
+    display: none !important;
+  }
+}
+
+/* 超小屏幕优化 */
+@media only screen and (max-width: 480px) {
+  .notion-row {
+    gap: 4px !important;
+  }
+  
+  .notion-column {
+    flex: 1 1 calc(50% - 2px) !important;
+  }
+  
+  .notion-asset-wrapper > div {
+    /* 移除固定的aspect-ratio，让图片自然显示 */
+  }
+  
+  .notion-asset-wrapper img {
+    object-fit: contain !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+  
+  /* 确保页面内容有合适的边距 */
+  .notion-page {
+    padding-left: 1vw !important;
+    padding-right: 1vw !important;
   }
 }
 
@@ -404,17 +472,6 @@
   align-items: center;
 }
 
-
-
-
-
-
-
-
-
-
-
-
 /* 3D卡片按压 + 悬停效果 - 纯CSS版本 */
 .notion-collection-card {
   position: relative;
@@ -424,6 +481,8 @@
   cursor: pointer;
   will-change: transform;
   margin: 0 8px; /* 默认左右边距 */
+  backface-visibility: hidden; /* 防止背面渲染 */
+  transform-origin: center center; /* 设置变换原点 */
 }
 
 /* 悬停时的3D效果 */
@@ -436,6 +495,19 @@
 .notion-collection-card:active {
   transform: perspective(1000px) rotateX(2deg) rotateY(2deg) scale(0.98);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 优化封面图片渲染 */
+.notion-collection-card-cover {
+  backface-visibility: hidden;
+  transform: translateZ(0); /* 启用硬件加速 */
+  will-change: transform;
+}
+
+.notion-collection-card-cover img {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 /* 响应式边距调整 */
@@ -472,3 +544,4 @@
     transform: perspective(1000px) rotateX(3deg) rotateY(3deg) scale(0.96);
   }
 }
+
