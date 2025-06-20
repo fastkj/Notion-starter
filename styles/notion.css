@@ -636,7 +636,6 @@
   height: auto !important;
   max-width: 90vw !important;
   max-height: 90vh !important;
-  border-radius: 12px !important; /* 保持圆角 */
   background: transparent !important;
 }
 
