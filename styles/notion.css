@@ -545,3 +545,90 @@
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+  .notion-column {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    background: #fff;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s, background 0.1s;
+
+
+  }
+  .notion-column:last-child {
+    margin-bottom: 10; /* 最后一个按钮无底部间距 */
+  }
+  .notion-page-link {
+    width: 100%;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .notion-page-title {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100%;
+    gap: 0.5em;
+  }
+  .notion-page-link,
+  .notion-page-link * {
+    text-decoration: none !important;
+    border-bottom: none !important;
+  }
+}
+
+/* 夜间模式适配 */
+@media only screen and (max-width: 600px) {
+  .dark-mode .notion-column {
+    background: #23272f;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.32);
+    color: #f3f3f3;
+  }
+  .dark-mode .notion-column:active,
+  .dark-mode .notion-page-link:active {
+    background: #181a20;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.44);
+  }
+}
+
+
+
+
+
+
+
+
+
